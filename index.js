@@ -31,7 +31,6 @@ vue_component = {
 }
 
 module.exports = vue_component
-vue_component.read({path:"./",name:"test"})
 function get_html(file,temp){
     let tempfile = file
     tempfile=tempfile.split("<template>")
