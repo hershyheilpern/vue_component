@@ -1,8 +1,16 @@
 const fs = require("fs")
 
 vue_component = {
-    read(obj,cb){
-        fs.readFile(obj.path+obj.name+".vue",(err,file)=>{
+    read(path,cb){
+        if(!path.toLowerCase().endsWith(".vue")){
+            path +=".vue"
+        }
+        let obj = {
+             name : path.split("/").pop(),
+           
+        }
+        obj.path = path.split(obj.name)[0]
+        fs.readFile(obj.path+obj.name,(err,file)=>{
             if(err){
                 cb(err)
             }else{
@@ -16,7 +24,7 @@ vue_component = {
                 {template:\`${temp.html.replace(/\`/gm,"\\\`")}\`,
                 ${temp.script.split(/{/gm).splice(1).join("{")})
                     let $$styleSheet = document.createElement("style")
-                        $$styleSheet.innerText = \`${temp.style.replace(/\$\$/g, obj.name)}\`
+                        $$styleSheet.innerText = \`${temp.style.replace(/\$\$/g, obj.name.reaplace(".",""))}\`
                         document.head.appendChild($$styleSheet)
                 `
 
