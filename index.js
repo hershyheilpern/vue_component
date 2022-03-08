@@ -16,7 +16,7 @@ vue_component = {
                 {template:\`${temp.html.replace(/\$\$/g, obj.name).replace(/\`/gm,"\\\`")}\`,
                 ${temp.script.split(/{/gm).splice(1).join("{")})
                 
-                let styleSheet = document.createElement("style")
+                let $$styleSheet = document.createElement("style")
                     styleSheet.innerText = \`${temp.style.replace(/\$\$/g, obj.name)}\`
                     document.head.appendChild(styleSheet)
                 `
