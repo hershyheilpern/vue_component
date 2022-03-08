@@ -13,7 +13,7 @@ vue_component = {
                 // temp.head = file.split(/<head>|<\/head>/gm)[1]
                 temp.html = get_html(file,temp)
                 let component = `Vue.component("${obj.name}",
-                {template:\`${temp.html.replace(/\$\$/g, obj.name).replace(/\`/gm,"\\\`")}\`,
+                {template:\`${temp.html.replace(/\`/gm,"\\\`")}\`,
                 ${temp.script.split(/{/gm).splice(1).join("{")})
                 
                 let $$styleSheet = document.createElement("style")
@@ -23,7 +23,7 @@ vue_component = {
 
                     
                 // fs.writeFile("test.js",component,err=>{
-                    cb(null,component)
+                    cb(null,component.replace(/\$\$/g, obj.name))
                 // })
             }
         })
