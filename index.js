@@ -18,7 +18,7 @@ vue_component = {
                 file = file.toString()
                 let temp = {}
                 temp.script = `${file.split(/<script|;?\s+<\/script>/gm)[1]}`
-                temp.script.replace
+                //temp.script.replace
                 temp.style = `${file.split(/<style>|<\/style>/gm)[1]}`
                 // temp.head = file.split(/<head>|<\/head>/gm)[1]
                 temp.html = get_html(file,temp)
